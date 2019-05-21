@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    compileOnly 'cn.bingoogolapple:bga-baseadapter:1.2.7@aar'
+    compileOnly 'com.github.bumptech.glide:glide:4.5.0'
+    compileOnly 'com.squareup.picasso:picasso:2.5.2'
+    compileOnly 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compileOnly 'org.xutils:xutils:3.5.0'
+    compileOnly 'com.android.support:support-v4:28.0.0'
+    compileOnly 'com.android.support:recyclerview-v7:28.0.0'
+}
+
+publish {
+    userOrg = 'xiajiangli2008'//bintray.com你的用户名
+    groupId = 'com.lingwo.cameralibrary'//jcenter上的路径
+    artifactId = 'CameraView'//项目名称
+    publishVersion = '1.0.3'//版本号
+    desc = '1、仿照微信的拍照和短视频；2、录制视频过程中，支持同时拍照；3、九宫格媒体文件展示'//描述，不重要
+    website = ''//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+    repoName = 'CameraPlugIn'
+}
